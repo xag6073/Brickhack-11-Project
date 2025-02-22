@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
+uid="uid://bbocjse1e5p16"
+=======
 uid="uid://dgkbha57faq7m"
+>>>>>>> a8b2fe5263e628a8df7d4cb63c2102a0f13d05c9
 path="res://.godot/imported/Pawn.png-292b7734ef4dc4d84485c1ad0a014b7e.ctex"
 metadata={
 "vram_texture": false

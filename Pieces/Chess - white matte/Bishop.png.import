@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
+uid="uid://ob7qd3o0c8x2"
+=======
 uid="uid://ca5wpfv5lvm76"
+>>>>>>> a8b2fe5263e628a8df7d4cb63c2102a0f13d05c9
 path="res://.godot/imported/Bishop.png-f239a190de2559eda128e53083af2e63.ctex"
 metadata={
 "vram_texture": false
