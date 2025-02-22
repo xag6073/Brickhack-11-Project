@@ -1,5 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://b7hv6acwhvcgy"]
 
+<<<<<<< HEAD:board.tscn
 [ext_resource type="PackedScene" uid="uid://d4cnicaud3m87" path="res://square.tscn" id="1_b7d0m"]
 [ext_resource type="Texture2D" uid="uid://bo6ldrcdx8g6a" path="res://Pieces/Chess - white matte/King.png" id="2_lpkbd"]
 [ext_resource type="Texture2D" uid="uid://cr3uff16frvc" path="res://Pieces/Chess - white matte/Queen.png" id="3_divd6"]
@@ -13,6 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://c4x15iioc72cd" path="res://Pieces/Chess - black matte/Knight.png" id="11_x7d2k"]
 [ext_resource type="Texture2D" uid="uid://cnfjsdtohyims" path="res://Pieces/Chess - black matte/Rook.png" id="12_tv1h4"]
 [ext_resource type="Texture2D" uid="uid://bbocjse1e5p16" path="res://Pieces/Chess - black matte/Pawn.png" id="13_bkeef"]
+=======
+[ext_resource type="PackedScene" uid="uid://d4cnicaud3m87" path="res://Scenes/square.tscn" id="1_b7d0m"]
+>>>>>>> a8b2fe5263e628a8df7d4cb63c2102a0f13d05c9:Scenes/board.tscn
 
 [node name="board" type="Node2D"]
 

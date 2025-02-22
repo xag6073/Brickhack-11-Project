@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://cjevsj5flw26f"
+=======
+uid="uid://bomxisde2tjwq"
+>>>>>>> a8b2fe5263e628a8df7d4cb63c2102a0f13d05c9
 path="res://.godot/imported/Rook.png-abb98cc27cb20789052e7ddec6a00ce3.ctex"
 metadata={
 "vram_texture": false
