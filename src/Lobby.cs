@@ -17,8 +17,8 @@ public partial class Lobby : Control
 	{
 		//Instance = this;
 		LABEL = GetNode<Label>("/root/Lobby/ConnectionLabel");  //GetTree().Root.FindChild("connectionLabel", true, false) as Godot.Label;
-		//HOST = GetNode<Button>("/root/Lobby/Button");
-		//JOIN = GetNode<Button>("/root/Lobby/Button2");
+		HOST = GetNode<Button>("/root/Lobby/Host");
+		JOIN = GetNode<Button>("/root/Lobby/Join");
 		//HOST_BUTTON = GetNode<Button>("Button");
 		//HOST_BUTTON.Pressed += CreateGame;
 		Multiplayer.PeerConnected += OnPlayerConnected;
@@ -42,8 +42,8 @@ public partial class Lobby : Control
 
 		GD.Print("Created game");
 		Multiplayer.MultiplayerPeer = peer;
-		//JOIN.Disabled = true;
-		//HOST.Disabled = true;
+		JOIN.Disabled = true;
+		HOST.Disabled = true;
 		LABEL.Text = "Waiting on other player...";
 		//return Error.Ok;
 	}
@@ -61,8 +61,9 @@ public partial class Lobby : Control
 			GD.Print(error);
 		}
 
-		//JOIN.Disabled = true;
-		//HOST.Disabled = true;
+		JOIN.Disabled = true;
+		HOST.Disabled = true;
+		LABEL.Text = "Connecting...";
 		Multiplayer.MultiplayerPeer = peer;
 		//return Error.Ok;
 
@@ -70,46 +71,40 @@ public partial class Lobby : Control
 
 	[Rpc]
 	private void OnPlayerConnected(long id) {
-		//if (Multiplayer.IsServer()) 
-		//{
+		if (Multiplayer.IsServer()) 
+		{
 			GD.Print("Player connected!!");
-			var scene = ResourceLoader.Load<PackedScene>("../Scenes/board.tscn").Instantiate();
-			GetTree().Root.AddChild(scene);
-			//GetTree().ChangeSceneToFile("../Scenes/board.tscn");
-   		//}
-			Hide();
+		}
+
+		var scene = ResourceLoader.Load<PackedScene>("../Scenes/board.tscn").Instantiate();
+		GetTree().Root.AddChild(scene);
+		Hide();
 	}
 	
 	[Rpc]
 	private void OnPlayerDisconnected(long id)
 	{
-		//if (Multiplayer.IsServer()) 
-		//{
+		if (Multiplayer.IsServer()) 
+		{
 			GD.Print("Player disconnected!!");
-			PrintTreePretty();
-			//var scene = ResourceLoader.Load<PackedScene>("../Scenes/lobby.tscn").Instantiate();
-			//GetTree().Root.AddChild(scene);
-			//if  (HasNode("ranks")) 
-			//{
-				GetNode("ranks").Free();
-				Show();
-			//}
-			Multiplayer.MultiplayerPeer = null;
-		//}
+		}
+		EndGame("Player disconnected!!");
 	}
 
 	[Rpc]
   private void OnServerDisconnected()
 	{
 		GD.Print("Server disconnected!!");
-		//var scene = ResourceLoader.Load<PackedScene>("../Scenes/lobby.tscn").Instantiate();
-		//GetTree().Root.AddChild(scene);
-		PrintTreePretty();
-		//if  (HasNode("ranks")) 
-		//	{
-				GetNode("ranks").Free();
-				Show();
-		//	}
+		EndGame("Server disconnected!!");
+	}
+
+	private void EndGame(string error = "") {
+		GetNode("../board").Free();
+		Show();
+		Multiplayer.MultiplayerPeer = null;
+		JOIN.Disabled = false;
+		HOST.Disabled = false;
+		LABEL.Text = error;
 	}
 
 
