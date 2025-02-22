@@ -11,10 +11,14 @@ config_version=5
 [application]
 
 config/name="BrickHack-11-Project"
-run/main_scene="res://src/scenes/main.tscn"
+run/main_scene="res://board.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [dotnet]
 
 project/assembly_name="BrickHack-11-Project"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"

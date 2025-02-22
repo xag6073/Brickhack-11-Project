@@ -1,0 +1,290 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7hv6acwhvcgy"]
+
+[ext_resource type="PackedScene" uid="uid://d4cnicaud3m87" path="res://square.tscn" id="1_b7d0m"]
+
+[node name="ranks" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="rank8" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="a8" parent="rank8" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="b8" parent="rank8" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="c8" parent="rank8" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="d8" parent="rank8" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="e8" parent="rank8" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="f8" parent="rank8" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="g8" parent="rank8" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="h8" parent="rank8" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="rank7" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="a7" parent="rank7" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="b7" parent="rank7" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="c7" parent="rank7" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="d7" parent="rank7" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="e7" parent="rank7" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="f7" parent="rank7" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="g7" parent="rank7" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="h7" parent="rank7" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="rank6" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="a6" parent="rank6" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="b6" parent="rank6" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="c6" parent="rank6" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="d6" parent="rank6" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="e6" parent="rank6" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="f6" parent="rank6" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="g6" parent="rank6" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="h6" parent="rank6" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="rank5" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="a5" parent="rank5" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="b5" parent="rank5" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="c5" parent="rank5" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="d5" parent="rank5" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="e5" parent="rank5" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="f5" parent="rank5" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="g5" parent="rank5" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="h5" parent="rank5" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="rank4" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="a4" parent="rank4" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="b4" parent="rank4" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="c4" parent="rank4" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="d4" parent="rank4" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="e4" parent="rank4" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="f4" parent="rank4" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="g4" parent="rank4" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="h4" parent="rank4" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="rank3" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="a3" parent="rank3" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="b3" parent="rank3" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="c3" parent="rank3" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="d3" parent="rank3" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="e3" parent="rank3" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="f3" parent="rank3" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="g3" parent="rank3" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="h3" parent="rank3" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="rank2" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="a2" parent="rank2" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="b2" parent="rank2" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="c2" parent="rank2" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="d2" parent="rank2" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="e2" parent="rank2" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="f2" parent="rank2" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="g2" parent="rank2" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="h2" parent="rank2" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="rank1" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="a1" parent="rank1" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="b1" parent="rank1" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="c1" parent="rank1" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="d1" parent="rank1" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="e1" parent="rank1" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="f1" parent="rank1" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+
+[node name="g1" parent="rank1" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
+color = Color(0.721569, 0.52549, 0.0431373, 1)
+dark = true
+
+[node name="h1" parent="rank1" instance=ExtResource("1_b7d0m")]
+layout_mode = 2
