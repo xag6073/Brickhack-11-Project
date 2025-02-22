@@ -7,18 +7,20 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 44.0
-offset_top = 22.0
-offset_right = 44.0
-offset_bottom = 22.0
+offset_left = 10.0
+offset_top = 6.0
+offset_right = 10.0
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4u2r7")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 469.0
+offset_top = 272.0
+offset_right = 513.0
+offset_bottom = 303.0
 text = "Host"
 script = ExtResource("1_4u2r7")
 
@@ -27,19 +29,20 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.007
 anchor_bottom = 0.012
-offset_left = 85.0
-offset_right = 114.936
-offset_bottom = 23.224
+offset_left = 600.0
+offset_top = 271.0
+offset_right = 629.936
+offset_bottom = 294.224
 text = "Join"
 script = ExtResource("1_4u2r7")
 
 [node name="ConnectionLabel" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = -15.0
-offset_top = 43.0
-offset_right = 143.0
-offset_bottom = 71.0
+offset_left = 487.0
+offset_top = 324.0
+offset_right = 626.0
+offset_bottom = 347.0
 
 [connection signal="pressed" from="Button" to="Button" method="CreateGame"]
 [connection signal="pressed" from="Button2" to="Button2" method="JoinGame"]

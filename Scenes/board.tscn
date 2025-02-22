@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b7hv6acwhvcgy"]
 
-[ext_resource type="PackedScene" uid="uid://d4cnicaud3m87" path="res://square.tscn" id="1_b7d0m"]
+[ext_resource type="PackedScene" uid="uid://d4cnicaud3m87" path="res://Scenes/square.tscn" id="1_b7d0m"]
 
 [node name="ranks" type="VBoxContainer"]
 anchors_preset = 15
