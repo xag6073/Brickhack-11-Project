@@ -6,15 +6,19 @@ public partial class Lobby : Control
 	public static Lobby Instance { get; private set; }
 
 	private const int PORT = 7000;
-	private const string SERVER_IP = "127.0.0.1";
+	private const string SERVER_IP = "129.21.120.51";
 
-	private Godot.Label LABEL;
+	private Label LABEL;
+	private Button	HOST;
+	private Button  JOIN;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		//Instance = this;
-		this.LABEL = GetNode<Label>("/root/Lobby/ConnectionLabel");  //GetTree().Root.FindChild("connectionLabel", true, false) as Godot.Label;
+		LABEL = GetNode<Label>("/root/Lobby/ConnectionLabel");  //GetTree().Root.FindChild("connectionLabel", true, false) as Godot.Label;
+		//HOST = GetNode<Button>("/root/Lobby/Button");
+		//JOIN = GetNode<Button>("/root/Lobby/Button2");
 		//HOST_BUTTON = GetNode<Button>("Button");
 		//HOST_BUTTON.Pressed += CreateGame;
 		Multiplayer.PeerConnected += OnPlayerConnected;
@@ -38,6 +42,8 @@ public partial class Lobby : Control
 
 		GD.Print("Created game");
 		Multiplayer.MultiplayerPeer = peer;
+		//JOIN.Disabled = true;
+		//HOST.Disabled = true;
 		LABEL.Text = "Waiting on other player...";
 		//return Error.Ok;
 	}
@@ -55,6 +61,8 @@ public partial class Lobby : Control
 			GD.Print(error);
 		}
 
+		//JOIN.Disabled = true;
+		//HOST.Disabled = true;
 		Multiplayer.MultiplayerPeer = peer;
 		//return Error.Ok;
 
