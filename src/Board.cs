@@ -51,6 +51,7 @@ public partial class Board : Node2D
 					{
 							string cellName = columns[col] + (8 - row).ToString();
 							ColorRect square = GetNode<ColorRect>("%" + cellName);
+							square.SetMeta("Coords", new int[] {row, col});
 							//GD.Print("Square found " + square.ToString());
 
 							//add a button to each cell that can move the selected piece
@@ -58,7 +59,7 @@ public partial class Board : Node2D
 							cellButton.Size = square.Size;
 							cellButton.Pressed += () => {
                     if (selectedPiece != null) {
-												//Rpc("movePiece", square, selectedPiece.pieceNode);
+												//Rpc("movePiece", square.Name, selectedPiece.name);
 												movePiece(square, selectedPiece);
 												//remove selected piece
 												//selectPiece(selectedPiece);
@@ -70,7 +71,7 @@ public partial class Board : Node2D
 							//GD.Print("Generating new piece at " + cellName);
 
 							PieceType pieceType = GetPieceType(startLayout[row, col]);
-							Piece newPiece = generateNewPiece(pieceType, "piece " + row + ":" + col, new int[] {row, col});
+							Piece newPiece = generateNewPiece(pieceType, "piece " + row + "_" + col, new int[] {row, col});
 							board[row, col] = new BoardTile(square, newPiece);
 					}
 			}
@@ -92,6 +93,8 @@ public partial class Board : Node2D
 
 		Piece newPiece = new Piece(type, name, position,  "");
 		Sprite2D pieceNode = new Sprite2D();
+		pieceNode.Name = name;
+		//pieceNode.UniqueNameInOwner = true;
 		Button pieceNodeButton = new Button();
 
 		string texturePath = GetTexturePath(type);
@@ -113,9 +116,11 @@ public partial class Board : Node2D
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer,TransferMode = MultiplayerPeer.TransferModeEnum.Reliable,CallLocal = true, TransferChannel = 1)]
 	public void movePiece(ColorRect square, Piece piece) {
-		if (piece == null) return;
 
-		Sprite2D pieceNode = piece.pieceNode;
+		//ColorRect square = GetNode<ColorRect>("%" + squareName);
+    Sprite2D pieceNode = piece.pieceNode;
+    if (pieceNode == null) return;
+		
     //Vector2 squareCenter = square.GlobalPosition + (square.GetRect().Size / 2);
     Vector2 pieceOffset = pieceNode.Texture.GetSize() / 2;
     //pieceNode.Position = square.Position + pieceOffset;
@@ -124,16 +129,29 @@ public partial class Board : Node2D
 		pieceNode.Position = new Vector2(square.GlobalPosition.X - 80, square.GlobalPosition.Y - 45);
 
 		//update matrix
+		int[] coords = (int[])square.GetMeta("Coords");
+		GD.Print(coords[0] + " : " + coords[1]);
+		board[piece.position[0],piece.position[1]].piece = null;
 		
+		//if a piece already exists, remove it
+		Piece moveToPiece = board[coords[0],coords[1]].piece;
+		if (moveToPiece != null) {
+			removePiece(moveToPiece);
+		}
+		board[coords[0],coords[1]].piece = piece;
+		piece.position = coords;
 		
 		selectPiece(piece);
+		//updateBoard();
 		
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer,TransferMode = MultiplayerPeer.TransferModeEnum.Reliable,CallLocal = true, TransferChannel = 1)]
 	public void removePiece(Piece piece) {
-		Sprite2D pieceNode = GetNode<Sprite2D>(piece.name);
+		//PrintTreePretty();
+		Sprite2D pieceNode = piece.pieceNode;
 		pieceNode.QueueFree();
+		pieceNode.Hide();
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer,TransferMode = MultiplayerPeer.TransferModeEnum.Reliable,CallLocal = true, TransferChannel = 1)]
@@ -164,7 +182,7 @@ public partial class Board : Node2D
 				}
 				selectedPiece = piece;
 				piece.pieceNode.GetChild<Button>(0).Modulate = new Color(1, 1, 1, 0.5f); // Make button semi-transparent to indicate selection
-				GD.Print("Selected piece " + piece.pieceNode);
+				GD.Print("Selected piece " + piece.pieceNode.Name);
 		}
 	}
 
