@@ -1,4 +1,5 @@
 
+using System;
 using Godot;
 
 public partial class Lobby : Control
@@ -8,7 +9,7 @@ public partial class Lobby : Control
 	private const int PORT = 7000;
 	private const string SERVER_IP = "129.21.120.51";
 
-	private Label LABEL;
+	private Label   LABEL;
 	private Button	HOST;
 	private Button  JOIN;
 
@@ -23,10 +24,16 @@ public partial class Lobby : Control
 		//HOST_BUTTON.Pressed += CreateGame;
 		Multiplayer.PeerConnected += OnPlayerConnected;
     Multiplayer.PeerDisconnected += OnPlayerDisconnected;
-    //Multiplayer.ConnectedToServer += OnConnectOk;
+    Multiplayer.ConnectedToServer += OnConnectOk;
     //Multiplayer.ConnectionFailed += OnConnectionFail;
     Multiplayer.ServerDisconnected += OnServerDisconnected;
 	}
+
+    private void OnConnectOk()
+    {
+      //does nothing
+    }
+
 
     private void CreateGame()
 	{

@@ -17,7 +17,6 @@ class BoardTile {
 public partial class Board : Node2D
 {
 
-	private static Node pieceFactory;
 	private BoardTile[,] board = new BoardTile[8, 8];
 
 	private string [,] startLayout = {{"br","bh","bb","bq","bk","bb","bh","br"},
@@ -36,11 +35,13 @@ public partial class Board : Node2D
   public override void _Ready()
 	{
 		//create chess backend
-		InitializeBoard();
+		if (Multiplayer.IsServer()) {
+			Rpc("InitializeBoard");
+		}
 		updateBoard();
 	}
 
-	[Rpc(MultiplayerApi.RpcMode.AnyPeer,TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer,TransferMode = MultiplayerPeer.TransferModeEnum.Reliable,CallLocal = true, TransferChannel = 1)]
 	private void InitializeBoard()
     {
 			string[] columns = { "a", "b", "c", "d", "e", "f", "g", "h" };
@@ -50,15 +51,23 @@ public partial class Board : Node2D
 					{
 							string cellName = columns[col] + (8 - row).ToString();
 							ColorRect square = GetNode<ColorRect>("%" + cellName);
-							GD.Print("Square found " + square.ToString());
+							//GD.Print("Square found " + square.ToString());
 
 							//add a button to each cell that can move the selected piece
 							Button cellButton = new Button();
 							cellButton.Size = square.Size;
-							cellButton.Pressed += () => movePiece(square, selectedPiece);
+							cellButton.Pressed += () => {
+                    if (selectedPiece != null) {
+												//Rpc("movePiece", square, selectedPiece.pieceNode);
+												movePiece(square, selectedPiece);
+												//remove selected piece
+												//selectPiece(selectedPiece);
+                    }
+                };
+							cellButton.Flat = true;
 							square.AddChild(cellButton);
 
-							GD.Print("Generating new piece at " + cellName);
+							//GD.Print("Generating new piece at " + cellName);
 
 							PieceType pieceType = GetPieceType(startLayout[row, col]);
 							Piece newPiece = generateNewPiece(pieceType, "piece " + row + ":" + col, new int[] {row, col});
@@ -77,7 +86,7 @@ public partial class Board : Node2D
 	
 	}
 
-	[Rpc(MultiplayerApi.RpcMode.AnyPeer,TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer,TransferMode = MultiplayerPeer.TransferModeEnum.Reliable,CallLocal = true, TransferChannel = 1)]
 	public Piece generateNewPiece(PieceType type, string name, int[] position) {
 		if (type == PieceType.NONE) return null;
 
@@ -102,7 +111,7 @@ public partial class Board : Node2D
 		return newPiece;
 	}
 
-	[Rpc(MultiplayerApi.RpcMode.AnyPeer,TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer,TransferMode = MultiplayerPeer.TransferModeEnum.Reliable,CallLocal = true, TransferChannel = 1)]
 	public void movePiece(ColorRect square, Piece piece) {
 		if (piece == null) return;
 
@@ -116,18 +125,18 @@ public partial class Board : Node2D
 
 		//update matrix
 		
-
-		//remove selected piece
-		selectedPiece = null;
+		
+		selectPiece(piece);
+		
 	}
 
-	[Rpc(MultiplayerApi.RpcMode.AnyPeer,TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer,TransferMode = MultiplayerPeer.TransferModeEnum.Reliable,CallLocal = true, TransferChannel = 1)]
 	public void removePiece(Piece piece) {
 		Sprite2D pieceNode = GetNode<Sprite2D>(piece.name);
 		pieceNode.QueueFree();
 	}
 
-	[Rpc(MultiplayerApi.RpcMode.AnyPeer,TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer,TransferMode = MultiplayerPeer.TransferModeEnum.Reliable,CallLocal = true, TransferChannel = 1)]
 	public void updateBoard() {
 		for (int row = 0; row < 8; row++)
 			{
@@ -141,7 +150,7 @@ public partial class Board : Node2D
 			}
 	}
 
-	[Rpc(MultiplayerApi.RpcMode.AnyPeer,TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
+	//[Rpc(MultiplayerApi.RpcMode.AnyPeer,TransferMode = MultiplayerPeer.TransferModeEnum.Reliable,CallLocal = true, TransferChannel = 1)]
 	public void selectPiece(Piece piece) {
 		if (selectedPiece == piece) {
 				// Deselect the piece
@@ -155,7 +164,7 @@ public partial class Board : Node2D
 				}
 				selectedPiece = piece;
 				piece.pieceNode.GetChild<Button>(0).Modulate = new Color(1, 1, 1, 0.5f); // Make button semi-transparent to indicate selection
-				GD.Print("Selected piece");
+				GD.Print("Selected piece " + piece.pieceNode);
 		}
 	}
 

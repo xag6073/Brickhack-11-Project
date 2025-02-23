@@ -511,6 +511,3 @@ texture = ExtResource("13_bkeef")
 [node name="BPawn8" type="Sprite2D" parent="Pieces/BlackPieces"]
 position = Vector2(-61, -2)
 texture = ExtResource("13_bkeef")
-
-[node name="PieceFactory" type="Node" parent="."]
-unique_name_in_owner = true
