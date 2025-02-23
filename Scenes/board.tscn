@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://b7hv6acwhvcgy"]
+[gd_scene load_steps=15 format=3 uid="uid://b7hv6acwhvcgy"]
 
+[ext_resource type="Script" path="res://src/Board.cs" id="1_8j5co"]
 [ext_resource type="PackedScene" uid="uid://d4cnicaud3m87" path="res://Scenes/square.tscn" id="1_b7d0m"]
 [ext_resource type="Texture2D" uid="uid://b8l4cpjocu301" path="res://Pieces/Chess - white matte/King.png" id="2_lpkbd"]
 [ext_resource type="Texture2D" uid="uid://cv2v2y6o8y3yl" path="res://Pieces/Chess - white matte/Queen.png" id="3_divd6"]
@@ -15,292 +16,369 @@
 [ext_resource type="Texture2D" uid="uid://dgwdj0qqo2om3" path="res://Pieces/Chess - black matte/Pawn.png" id="13_bkeef"]
 
 [node name="board" type="Node2D"]
+position = Vector2(103, 65)
+script = ExtResource("1_8j5co")
 
 [node name="ranks" type="VBoxContainer" parent="."]
-offset_right = 1152.0
+offset_right = 414.0
+offset_bottom = 412.0
 
 [node name="rank8" type="HBoxContainer" parent="ranks"]
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="a8" parent="ranks/rank8" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="b8" parent="ranks/rank8" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="c8" parent="ranks/rank8" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="d8" parent="ranks/rank8" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="e8" parent="ranks/rank8" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="f8" parent="ranks/rank8" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="g8" parent="ranks/rank8" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
+metadata/row = 3
+metadata/Col = 4
 
 [node name="h8" parent="ranks/rank8" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="rank7" type="HBoxContainer" parent="ranks"]
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="a7" parent="ranks/rank7" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="b7" parent="ranks/rank7" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="c7" parent="ranks/rank7" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="d7" parent="ranks/rank7" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="e7" parent="ranks/rank7" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="f7" parent="ranks/rank7" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="g7" parent="ranks/rank7" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="h7" parent="ranks/rank7" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="rank6" type="HBoxContainer" parent="ranks"]
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="a6" parent="ranks/rank6" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="b6" parent="ranks/rank6" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="c6" parent="ranks/rank6" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="d6" parent="ranks/rank6" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="e6" parent="ranks/rank6" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="f6" parent="ranks/rank6" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="g6" parent="ranks/rank6" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="h6" parent="ranks/rank6" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="rank5" type="HBoxContainer" parent="ranks"]
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="a5" parent="ranks/rank5" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="b5" parent="ranks/rank5" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="c5" parent="ranks/rank5" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="d5" parent="ranks/rank5" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="e5" parent="ranks/rank5" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="f5" parent="ranks/rank5" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="g5" parent="ranks/rank5" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="h5" parent="ranks/rank5" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="rank4" type="HBoxContainer" parent="ranks"]
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="a4" parent="ranks/rank4" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="b4" parent="ranks/rank4" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="c4" parent="ranks/rank4" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="d4" parent="ranks/rank4" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="e4" parent="ranks/rank4" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="f4" parent="ranks/rank4" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="g4" parent="ranks/rank4" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="h4" parent="ranks/rank4" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="rank3" type="HBoxContainer" parent="ranks"]
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="a3" parent="ranks/rank3" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="b3" parent="ranks/rank3" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="c3" parent="ranks/rank3" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="d3" parent="ranks/rank3" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="e3" parent="ranks/rank3" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="f3" parent="ranks/rank3" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="g3" parent="ranks/rank3" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="h3" parent="ranks/rank3" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="rank2" type="HBoxContainer" parent="ranks"]
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="a2" parent="ranks/rank2" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="b2" parent="ranks/rank2" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="c2" parent="ranks/rank2" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="d2" parent="ranks/rank2" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="e2" parent="ranks/rank2" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="f2" parent="ranks/rank2" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="g2" parent="ranks/rank2" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="h2" parent="ranks/rank2" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="rank1" type="HBoxContainer" parent="ranks"]
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="a1" parent="ranks/rank1" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="b1" parent="ranks/rank1" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="c1" parent="ranks/rank1" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="d1" parent="ranks/rank1" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="e1" parent="ranks/rank1" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="f1" parent="ranks/rank1" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="g1" parent="ranks/rank1" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 color = Color(0.721569, 0.52549, 0.0431373, 1)
 dark = true
 
 [node name="h1" parent="ranks/rank1" instance=ExtResource("1_b7d0m")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Pieces" type="Sprite2D" parent="."]
-position = Vector2(141, 566)
+position = Vector2(146, 831)
 
 [node name="WhitePieces" type="Sprite2D" parent="Pieces"]
 
@@ -357,7 +435,7 @@ position = Vector2(12, -104)
 texture = ExtResource("7_at3nq")
 
 [node name="WPawn6" type="Sprite2D" parent="Pieces/WhitePieces"]
-position = Vector2(-61, -104)
+position = Vector2(-59, -106)
 texture = ExtResource("7_at3nq")
 
 [node name="WPawn7" type="Sprite2D" parent="Pieces/WhitePieces"]
@@ -419,7 +497,7 @@ position = Vector2(14, -2)
 texture = ExtResource("13_bkeef")
 
 [node name="BPawn5" type="Sprite2D" parent="Pieces/BlackPieces"]
-position = Vector2(-4, -2)
+position = Vector2(-393, -174)
 texture = ExtResource("13_bkeef")
 
 [node name="BPawn6" type="Sprite2D" parent="Pieces/BlackPieces"]
@@ -433,3 +511,6 @@ texture = ExtResource("13_bkeef")
 [node name="BPawn8" type="Sprite2D" parent="Pieces/BlackPieces"]
 position = Vector2(-61, -2)
 texture = ExtResource("13_bkeef")
+
+[node name="PieceFactory" type="Node" parent="."]
+unique_name_in_owner = true

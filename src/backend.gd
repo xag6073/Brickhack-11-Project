@@ -80,7 +80,7 @@ func move_piece(from_pos: Vector2, to_pos: Vector2) -> bool:
 	
 	# Switch turn
 	turn = WHITE if turn == BLACK else BLACK
-	
+
 	return true
 
 # Check if a position is valid (within the board limits)
