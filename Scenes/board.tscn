@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b7hv6acwhvcgy"]
+[gd_scene load_steps=18 format=3 uid="uid://b7hv6acwhvcgy"]
 
 [ext_resource type="Script" path="res://src/Board.cs" id="1_8j5co"]
 [ext_resource type="PackedScene" uid="uid://d4cnicaud3m87" path="res://Scenes/square.tscn" id="1_b7d0m"]
@@ -14,6 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://033wh4677f4y" path="res://Pieces/Chess - black matte/Knight.png" id="11_x7d2k"]
 [ext_resource type="Texture2D" uid="uid://ihqqt3mitl07" path="res://Pieces/Chess - black matte/Rook.png" id="12_tv1h4"]
 [ext_resource type="Texture2D" uid="uid://dgwdj0qqo2om3" path="res://Pieces/Chess - black matte/Pawn.png" id="13_bkeef"]
+[ext_resource type="Texture2D" uid="uid://bgvscxo78ed46" path="res://Pieces/BrickChess Swap Card.png" id="15_cju2i"]
+[ext_resource type="Script" path="res://src/Cards.cs" id="16_jnyk4"]
+[ext_resource type="Texture2D" uid="uid://iytpmejwt25w" path="res://Pieces/BrickChess Sleep Card.png" id="16_nt5wm"]
 
 [node name="board" type="Node2D"]
 position = Vector2(103, 65)
@@ -573,3 +576,50 @@ texture = ExtResource("13_bkeef")
 [node name="BPawn8" type="Sprite2D" parent="Pieces/BlackPieces"]
 position = Vector2(-61, -2)
 texture = ExtResource("13_bkeef")
+
+[node name="Cards" type="Node2D" parent="."]
+position = Vector2(481, 297)
+script = ExtResource("16_jnyk4")
+
+[node name="Swap" type="Sprite2D" parent="Cards"]
+unique_name_in_owner = true
+position = Vector2(84, 104)
+scale = Vector2(0.472222, 0.406433)
+texture = ExtResource("15_cju2i")
+
+[node name="Button" type="Button" parent="Cards/Swap"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -123.0
+offset_top = -175.0
+offset_right = -123.0
+offset_bottom = -170.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sleep" type="Sprite2D" parent="Cards"]
+unique_name_in_owner = true
+position = Vector2(249, 105)
+scale = Vector2(0.595, 0.406)
+texture = ExtResource("16_nt5wm")
+
+[node name="Button" type="Button" parent="Cards/Sleep"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -126.0
+offset_top = -177.0
+offset_right = 128.0
+offset_bottom = 175.0
+
+[node name="UseCard" type="Button" parent="Cards"]
+unique_name_in_owner = true
+offset_left = 119.0
+offset_top = -53.0
+offset_right = 197.0
+offset_bottom = -22.0
+text = "Use Card"
+
+[connection signal="pressed" from="Cards/Swap/Button" to="Cards" method="selectSwap"]
+[connection signal="pressed" from="Cards/Sleep/Button" to="Cards" method="selectSleep"]
+[connection signal="pressed" from="Cards/UseCard" to="Cards" method="useCard"]

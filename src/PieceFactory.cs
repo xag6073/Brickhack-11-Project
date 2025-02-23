@@ -27,13 +27,13 @@ public class Piece {
 
 	public int[] position;
 
-	public string someAttribute;
+	public bool sleep;
 
-	public Piece(PieceType type, string name, int[] position, string attribute) {
+	public Piece(PieceType type, string name, int[] position, bool sleep) {
 		this.type = type;
 		this.name = name;
 		this.position = position;
-	  someAttribute = attribute;
+	  this.sleep = sleep;
 	}
 }
 

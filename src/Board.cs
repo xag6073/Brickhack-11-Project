@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-class BoardTile {
+public class BoardTile {
 	public ColorRect square;
 
 	public Piece piece;
@@ -17,6 +17,11 @@ class BoardTile {
 public partial class Board : Node2D
 {
 
+	public static Board Instance { get; set; }
+
+	[Signal]
+	public delegate void GameOverEventHandler(string message);
+
 	private BoardTile[,] board = new BoardTile[8, 8];
 
 	private string [,] startLayout = {{"br","bh","bb","bq","bk","bb","bh","br"},
@@ -27,13 +32,14 @@ public partial class Board : Node2D
 																		{"","","","","","","",""},
 																		{"wp","wp","wp","wp","wp","wp","wp","wp"},
 																		{"wr","wh","wb","wk","wq","wb","wh","wr"}};
-  private Piece selectedPiece = null;
+  public Piece selectedPiece = null;
 
 	private Boolean tempFlag = true;
 
     // Called when the node enters the scene tree for the first time.
   public override void _Ready()
 	{
+		Instance = this;
 		//create chess backend
 		if (Multiplayer.IsServer()) {
 			Rpc("InitializeBoard");
@@ -60,7 +66,7 @@ public partial class Board : Node2D
 							cellButton.Pressed += () => {
                     if (selectedPiece != null) {
 												//Rpc("movePiece", square.Name, selectedPiece.name);
-												movePiece(square, selectedPiece);
+												movePiece(square, selectedPiece, true);
 												//remove selected piece
 												//selectPiece(selectedPiece);
                     }
@@ -91,7 +97,7 @@ public partial class Board : Node2D
 	public Piece generateNewPiece(PieceType type, string name, int[] position) {
 		if (type == PieceType.NONE) return null;
 
-		Piece newPiece = new Piece(type, name, position,  "");
+		Piece newPiece = new Piece(type, name, position,  false);
 		Sprite2D pieceNode = new Sprite2D();
 		pieceNode.Name = name;
 		//pieceNode.UniqueNameInOwner = true;
@@ -115,7 +121,11 @@ public partial class Board : Node2D
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer,TransferMode = MultiplayerPeer.TransferModeEnum.Reliable,CallLocal = true, TransferChannel = 1)]
-	public void movePiece(ColorRect square, Piece piece) {
+	public void movePiece(ColorRect square, Piece piece, bool update) {
+		if(piece.sleep) {
+			GD.Print("Can't move a sleeping piece");
+			return;
+		}
 
 		//ColorRect square = GetNode<ColorRect>("%" + squareName);
     Sprite2D pieceNode = piece.pieceNode;
@@ -125,18 +135,18 @@ public partial class Board : Node2D
     Vector2 pieceOffset = pieceNode.Texture.GetSize() / 2;
     //pieceNode.Position = square.Position + pieceOffset;
 		//TEMP
-		GD.Print("Moving piece to " + square.GlobalPosition.X + " : " + square.GlobalPosition.Y);
+		//GD.Print("Moving piece to " + square.GlobalPosition.X + " : " + square.GlobalPosition.Y);
 		pieceNode.Position = new Vector2(square.GlobalPosition.X - 80, square.GlobalPosition.Y - 45);
 
 		//update matrix
 		int[] coords = (int[])square.GetMeta("Coords");
-		GD.Print(coords[0] + " : " + coords[1]);
+		//GD.Print(coords[0] + " : " + coords[1]);
 		board[piece.position[0],piece.position[1]].piece = null;
 		
 		//if a piece already exists, remove it
 		Piece moveToPiece = board[coords[0],coords[1]].piece;
-		if (moveToPiece != null) {
-			removePiece(moveToPiece);
+		if (update && moveToPiece != null) {
+   		removePiece(moveToPiece);
 		}
 		board[coords[0],coords[1]].piece = piece;
 		piece.position = coords;
@@ -152,6 +162,9 @@ public partial class Board : Node2D
 		Sprite2D pieceNode = piece.pieceNode;
 		pieceNode.QueueFree();
 		pieceNode.Hide();
+		if (piece.type == PieceType.BKING || piece.type == PieceType.WKING) {
+			//end game
+		}
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer,TransferMode = MultiplayerPeer.TransferModeEnum.Reliable,CallLocal = true, TransferChannel = 1)]
@@ -161,8 +174,11 @@ public partial class Board : Node2D
 					for (int col = 0; col < 8; col++)
 					{
 						BoardTile tile = board[row, col];
+						if(tile == null) {
+							GD.Print(row + " : " + col);
+						}
 						if(tile.piece != null) {
-							movePiece(tile.square, tile.piece);
+							movePiece(tile.square, tile.piece, false);
 						}
 					}
 			}
@@ -246,5 +262,13 @@ public partial class Board : Node2D
 				default:
 					return PieceType.NONE;
 		}
+	}
+
+	public Piece getSelectedPiece() {
+		return selectedPiece;
+	}
+
+	public BoardTile[,] getBoard() {
+		return board;
 	}
 }
